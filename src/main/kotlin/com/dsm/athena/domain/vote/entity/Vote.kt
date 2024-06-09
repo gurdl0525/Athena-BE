@@ -1,7 +1,7 @@
 package com.dsm.athena.domain.vote.entity
 
 import com.dsm.athena.domain.recruit.entity.Recruit
-import com.dsm.athena.domain.thesis.Thesis
+import com.dsm.athena.domain.thesis.entity.Thesis
 import com.dsm.athena.domain.user.entity.User
 import javax.persistence.*
 

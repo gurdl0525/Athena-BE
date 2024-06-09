@@ -1,6 +1,6 @@
 package com.dsm.athena.domain.recruit.entity
 
-import com.dsm.athena.domain.thesis.Thesis
+import com.dsm.athena.domain.thesis.entity.Thesis
 import org.hibernate.annotations.DynamicUpdate
 import java.time.LocalDate
 import javax.persistence.*
@@ -8,11 +8,11 @@ import javax.persistence.*
 @DynamicUpdate
 @Entity(name = "tbl_recruit")
 @Table(uniqueConstraints = [UniqueConstraint(
-    name = "",
+    name = "idx_start_at_end_at",
     columnNames = ["start_at", "end_at"])
 ])
 data class Recruit (
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?,
 
     @Column(name = "start_at", nullable = false, updatable = false)
@@ -28,5 +28,5 @@ data class Recruit (
     var totalCount: Int,
 
     @OneToMany(mappedBy = "recruit")
-    val theses: MutableList<Thesis> = arrayListOf()
+    val theses: MutableList<Thesis> = mutableListOf()
 )

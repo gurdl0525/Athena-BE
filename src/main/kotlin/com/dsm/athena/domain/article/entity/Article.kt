@@ -1,5 +1,6 @@
-package com.dsm.athena.domain.arthicle.entity
+package com.dsm.athena.domain.article.entity
 
+import com.dsm.athena.domain.thesis.entity.Thesis
 import com.dsm.athena.domain.user.entity.User
 import org.springframework.data.domain.Persistable
 import java.time.LocalDateTime
@@ -8,25 +9,32 @@ import javax.persistence.*
 @Entity
 @Table(name = "tbl_article")
 data class Article(
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @get:JvmName("getIdByJVM")
     val id: Long?,
+
+    @Column(name = "title", nullable = false, length = 30)
+    var title: String,
 
     @Column(name = "content", nullable = false, length = 10000)
     var content: String,
 
-    @Column(name = "thumbnail_url", nullable = false)
-    var thumbnailUrl: String,
+    @Column(name = "thumbnail_url", nullable = true)
+    var thumbnailUrl: String?,
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "writer", nullable = false, updatable = false)
+    @JoinColumn(name = "writer_id", nullable = false, updatable = false)
     var writer: User,
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "thesis_id", nullable = false, updatable = false)
+    val thesis: Thesis,
+
     @Column(name = "like_count", nullable = false)
-    var likeCount: Long,
+    var likeCount: Long = 0,
 
     @Column(name = "comment_count", nullable = false)
-    var commentCount: Long,
+    var commentCount: Long = 0,
 
     @Column(name = "created_at", nullable = false)
     var createdAt: LocalDateTime

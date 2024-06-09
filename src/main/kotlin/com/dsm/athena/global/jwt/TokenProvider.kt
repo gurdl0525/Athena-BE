@@ -6,7 +6,6 @@ import com.dsm.athena.global.jwt.dao.RefreshTokenRepository
 import com.dsm.athena.global.jwt.entity.RefreshToken
 import com.dsm.athena.global.jwt.env.JwtProperties
 import com.dsm.athena.global.security.principal.CustomUserDetailService
-import com.dsm.athena.global.security.principal.CustomUserDetails
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
